@@ -15,14 +15,16 @@
         android:layout_alignParentEnd="true"
         android:checked="false"
         android:layout_toEndOf="@+id/scalarMult"
-        android:layout_toRightOf="@+id/scalarMult" />
+        android:layout_toRightOf="@+id/scalarMult"
+        android:onClick="coordinateSwitch"
+        android:enabled="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="x"
         android:id="@+id/crossMult"
-        android:onClick="onButtonClick"
+        android:onClick="crossMultButtonClick"
         android:layout_below="@+id/switch1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -34,7 +36,8 @@
         android:id="@+id/scalarMult"
         android:layout_alignBaseline="@+id/crossMult"
         android:layout_alignBottom="@+id/crossMult"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="scalarMultButtonClick" />
 
     <Button
         android:layout_width="wrap_content"
@@ -45,7 +48,8 @@
         android:layout_alignBaseline="@+id/scalarMult"
         android:layout_alignBottom="@+id/scalarMult"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="addButtonClick" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,33 +66,31 @@
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:ems="10"
-        android:id="@+id/x1"
+        android:id="@+id/in1"
         android:layout_below="@+id/vector1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/crossMult"
-        android:layout_alignEnd="@+id/crossMult"
-        android:hint="x" />
+        android:layout_alignEnd="@+id/crossMult" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:ems="10"
-        android:id="@+id/y1"
-        android:layout_alignBottom="@+id/x1"
+        android:id="@+id/in2"
+        android:layout_alignBottom="@+id/in1"
         android:layout_alignLeft="@+id/scalarMult"
         android:layout_alignStart="@+id/scalarMult"
         android:layout_alignRight="@+id/scalarMult"
-        android:layout_alignEnd="@+id/scalarMult"
-        android:hint="y" />
+        android:layout_alignEnd="@+id/scalarMult" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vector 2"
         android:id="@+id/vector2"
-        android:layout_below="@+id/x1"
+        android:layout_below="@+id/in1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -97,31 +99,29 @@
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:ems="10"
-        android:id="@+id/x2"
+        android:id="@+id/in3"
         android:layout_below="@+id/vector2"
-        android:layout_alignRight="@+id/x1"
-        android:layout_alignEnd="@+id/x1"
-        android:hint="x" />
+        android:layout_alignRight="@+id/in1"
+        android:layout_alignEnd="@+id/in1" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:ems="10"
-        android:id="@+id/y2"
-        android:layout_alignBottom="@+id/x2"
-        android:layout_alignRight="@+id/y1"
-        android:layout_alignEnd="@+id/y1"
-        android:layout_alignLeft="@+id/y1"
-        android:layout_alignStart="@+id/y1"
-        android:hint="y" />
+        android:id="@+id/in4"
+        android:layout_alignBottom="@+id/in3"
+        android:layout_alignRight="@+id/in2"
+        android:layout_alignEnd="@+id/in2"
+        android:layout_alignLeft="@+id/in2"
+        android:layout_alignStart="@+id/in2" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vector 3"
         android:id="@+id/vector3"
-        android:layout_below="@+id/x2"
+        android:layout_below="@+id/in3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -130,26 +130,24 @@
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:ems="10"
-        android:id="@+id/x3"
+        android:id="@+id/in5"
         android:layout_below="@+id/vector3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/x2"
-        android:layout_alignEnd="@+id/x2"
-        android:hint="x" />
+        android:layout_alignRight="@+id/in3"
+        android:layout_alignEnd="@+id/in3" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:ems="10"
-        android:id="@+id/y3"
-        android:layout_alignBottom="@+id/x3"
-        android:layout_alignRight="@+id/y2"
-        android:layout_alignEnd="@+id/y2"
-        android:layout_alignLeft="@+id/y2"
-        android:layout_alignStart="@+id/y2"
-        android:hint="y" />
+        android:id="@+id/in6"
+        android:layout_alignBottom="@+id/in5"
+        android:layout_alignRight="@+id/in4"
+        android:layout_alignEnd="@+id/in4"
+        android:layout_alignLeft="@+id/in4"
+        android:layout_alignStart="@+id/in4" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -160,5 +158,41 @@
         android:layout_toLeftOf="@+id/switch1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Result"
+        android:id="@+id/result"
+        android:layout_below="@+id/in5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/result_x"
+        android:layout_below="@+id/result"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/result_y"
+        android:layout_alignTop="@+id/result_x"
+        android:layout_alignLeft="@+id/in6"
+        android:layout_alignStart="@+id/in6" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/result_z"
+        android:layout_alignTop="@+id/result_y"
+        android:layout_alignLeft="@+id/add"
+        android:layout_alignStart="@+id/add" />
 
 </RelativeLayout>

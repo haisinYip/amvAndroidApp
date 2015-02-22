@@ -6,10 +6,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private boolean polarFlag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +44,52 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onButtonClick(View v) {
+    public void crossMultButtonClick(View v) {
         Button button = (Button) v;
-        /*
-        String bText = button.getText().toString();
-        int value = Integer.parseInt(bText);
-        total += value;
-        */
-        int total = 0;
-        TextView myTextView = (TextView) findViewById(R.id.resultBox);
-        myTextView.setText(Integer.toString(total));
+
+        // Result text fields
+        TextView resX = (TextView) findViewById(R.id.result_x);
+        TextView resY = (TextView) findViewById(R.id.result_y);
+        TextView resZ = (TextView) findViewById(R.id.result_z);
+
+        // Input edit text fields
+        // vector1
+        EditText v1_1 = (EditText) findViewById(R.id.in1);
+        EditText v1_2 = (EditText) findViewById(R.id.in2);
+
+        // vector2
+        EditText v2_1 = (EditText) findViewById(R.id.in3);
+        EditText v2_2 = (EditText) findViewById(R.id.in4);
+
+        double[] result = new double[3];
+
+        if (!polarFlag)
+            result = MobileVectorCalculatorServiceCrossMult.crossMult(v1_1.getText().toString(), v1_2.getText().toString(), v2_1.getText().toString(), v2_2.getText().toString(), "false");
+        else
+            result = MobileVectorCalculatorServiceCrossMult.crossMult(v1_1.getText().toString(), v1_2.getText().toString(), v2_1.getText().toString(), v2_2.getText().toString(), "true");
+
+        resX.setText(Double.toString(result[0]));
+        resY.setText(Double.toString(result[1]));
+        resZ.setText(Double.toString(result[2]));
+    }
+
+    public void scalarMultButtonClick(View v) {
+  
+    }
+
+    public void addButtonClick(View v) {
+
+    }
+
+    public void coordinateSwitch(View v) {
+        Switch coordSwitch = (Switch) findViewById(R.id.switch1);
+        if (coordSwitch.isChecked()) {
+            coordSwitch.setText("Polar");
+            polarFlag = true;
+        }
+        else  {
+            coordSwitch.setText("Cartesian");
+            polarFlag = false;
+        }
     }
 }
