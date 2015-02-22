@@ -59,7 +59,7 @@ public class MainActivity extends ActionBarActivity {
         EditText v2_2 = (EditText) findViewById(R.id.in4);
 
         double[] result = new double[3];
-        String out = null;
+        String out = "";
 
         if (!polarFlag) {
             try {
@@ -103,7 +103,7 @@ public class MainActivity extends ActionBarActivity {
         EditText v2_2 = (EditText) findViewById(R.id.in4);
 
         double result = 0.0;
-        String out = null;
+        String out = "";
 
         if (!polarFlag) {
             try {
@@ -152,7 +152,7 @@ public class MainActivity extends ActionBarActivity {
         EditText v3_2 = (EditText) findViewById(R.id.in6);
 
         double[] result = new double[2];
-        String out = null;
+        String out = "";
 
         if (!polarFlag) {
             try {
