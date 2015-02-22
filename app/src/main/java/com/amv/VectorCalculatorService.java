@@ -115,6 +115,14 @@ public class VectorCalculatorService {
                 x2 = r2*Math.cos(t2);
                 y2 = r2*Math.sin(t2);
 
+                double x_res = x1+x2+x3;
+                double y_res = y1+y2+y3;
+
+                // convert back to polar
+                result[0] = Math.sqrt((x_res*x_res)+(y_res*y_res));
+                result[1] = Math.toDegrees(Math.atan(y_res/x_res));
+
+                return result;
             }
 
             result[0] = x1+x2+x3;

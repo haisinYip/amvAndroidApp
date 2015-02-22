@@ -2,7 +2,6 @@ import com.amv.VectorCalculatorService;
 
 import org.junit.Test;
 
-import static junit.framework.Assert.fail;
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 
@@ -119,8 +118,8 @@ public class VectorCalculatorServiceTest {
     @Test
     public void testPolarGeneralInput_vectorAddition() {
         VectorCalculatorService.polar = true;
-        double[] actual = VectorCalculatorService.vectorAddition("1", "45", "3", "90", null, null);
-        double[] expected = {0.5*Math.sqrt(2.0),3+0.5*Math.sqrt(2.0)};
+        double[] actual = VectorCalculatorService.vectorAddition("3", "0", "4", "90", null, null);
+        double[] expected = {5, Math.toDegrees(Math.atan(4.0/3.0))};
         assertArrayEquals(expected, actual, delta);
     }
 }

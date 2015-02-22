@@ -1,11 +1,10 @@
 package com.amv;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -76,7 +75,7 @@ public class MainActivity extends ActionBarActivity {
         else {
             try {
                 result = VectorCalculatorService.crossProduct(v1_1.getText().toString(), v1_2.getText().toString(), v2_1.getText().toString(), v2_2.getText().toString());
-                out = "< " + Double.toString(result[0]) + ", " + Double.toString(result[1]) + ", " + Double.toString(result[2]) + " >" ;
+                out = Double.toString(result[2]) + ", theta = " + Double.toString(result[0]) + ", phi = " + Double.toString(result[1]);
 
             } catch (NumberFormatException nfe) {
                 out = "<>";
@@ -169,13 +168,13 @@ public class MainActivity extends ActionBarActivity {
         else {
             try {
                 result = VectorCalculatorService.vectorAddition(v1_1.getText().toString(), v1_2.getText().toString(), v2_1.getText().toString(), v2_2.getText().toString(), v3_1.getText().toString(), v3_2.getText().toString());
-                out = "< " + Double.toString(result[0]) + ", " + Double.toString(result[1]) + " >" ;
+                out = Double.toString(result[0]) + " with angle " + Double.toString(result[1]);
 
             } catch (NumberFormatException nfe) {
-                out = "<>";
+                out = "";
 
             } catch (IllegalArgumentException iae) {
-                out = "<>";
+                out = "";
             }
         }
 
