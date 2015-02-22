@@ -6,7 +6,7 @@ import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 
 // Haisin Yip - 260480026
-// Eric Liou -
+// Eric Liou - 260473205
 
 public class VectorCalculatorServiceTest {
 

@@ -1,7 +1,7 @@
 package com.amv;
 
 // Haisin Yip - 260480026
-// Eric Liou -
+// Eric Liou - 260473205
 public class VectorCalculatorService {
 
     public static boolean polar = false;

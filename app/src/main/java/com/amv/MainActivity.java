@@ -168,7 +168,7 @@ public class MainActivity extends ActionBarActivity {
         else {
             try {
                 result = VectorCalculatorService.vectorAddition(v1_1.getText().toString(), v1_2.getText().toString(), v2_1.getText().toString(), v2_2.getText().toString(), v3_1.getText().toString(), v3_2.getText().toString());
-                out = Double.toString(result[0]) + " with angle " + Double.toString(result[1]);
+                out = Double.toString(result[0]) + " ∠ " + Double.toString(result[1]);
 
             } catch (NumberFormatException nfe) {
                 out = "";
