@@ -176,8 +176,8 @@
         android:layout_below="@+id/result"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/in6"
         android:layout_toStartOf="@+id/in6"
-        android:layout_alignBottom="@+id/result" />
+        android:layout_alignRight="@+id/add"
+        android:layout_alignEnd="@+id/add" />
 
 </RelativeLayout>
