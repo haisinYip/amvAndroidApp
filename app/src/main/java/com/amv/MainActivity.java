@@ -41,8 +41,6 @@ class DrawPlot extends View {
         center[0] = 0.5f*canvas.getWidth();
         center[1] = 0.8f*canvas.getHeight();
 
-        //float lineLength = 0.1f*canvas.getWidth();
-
         // x and y axis
         canvas.drawLine(0, 0.8f*canvas.getHeight(), canvas.getWidth(), 0.8f*canvas.getHeight(), black);
         canvas.drawLine(0.5f*canvas.getWidth(), 0.63f*canvas.getHeight(), 0.5f*canvas.getWidth(), canvas.getHeight(), black);
@@ -223,7 +221,7 @@ public class MainActivity extends ActionBarActivity {
             try {
                 result = VectorCalculatorService.vectorAddition(v1_1.getText().toString(), v1_2.getText().toString(), v2_1.getText().toString(), v2_2.getText().toString(), v3_1.getText().toString(), v3_2.getText().toString());
                 out = Double.toString(result[0]) + " ∠ " + Double.toString(result[1]);
-                plot.drawVector((float)(result[0]*Math.cos(result[1])), (float)(result[1]*Math.sin(result[1])));
+                plot.drawVector((float)(result[0]*Math.cos(result[1])), (float)(result[0]*Math.sin(result[1])));
 
             } catch (NumberFormatException nfe) {
                 out = "";
