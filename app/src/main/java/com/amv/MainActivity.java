@@ -1,5 +1,9 @@
 package com.amv;
 
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -10,14 +14,33 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity {
+class DrawPlot extends View {
+    public DrawPlot(Context context) {
+        super(context);
+    }
 
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        Paint red = new Paint();
+        red.setColor(Color.RED);
+        red.setStyle(Paint.Style.FILL);
+
+        canvas.drawLine(0.8f*canvas.getWidth(), 0.8f*canvas.getHeight(), canvas.getWidth(), canvas.getHeight(), red);
+    }
+}
+
+public class MainActivity extends ActionBarActivity {
     private boolean polarFlag = false;
+    private DrawPlot plot = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        plot = new DrawPlot(this);
+        setContentView(plot);
     }
 
 
