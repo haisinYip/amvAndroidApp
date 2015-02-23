@@ -1,5 +1,6 @@
 package com.amv;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,12 +10,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
 
 class DrawPlot extends View {
+    private float x = 0;
+    private float y = 0;
+
+    private float[] center = {0.0f, 0.0f};
+
     public DrawPlot(Context context) {
         super(context);
     }
@@ -22,12 +29,34 @@ class DrawPlot extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         Paint red = new Paint();
         red.setColor(Color.RED);
         red.setStyle(Paint.Style.FILL);
 
-        canvas.drawLine(0.8f*canvas.getWidth(), 0.8f*canvas.getHeight(), canvas.getWidth(), canvas.getHeight(), red);
+        Paint black = new Paint();
+        black.setColor(Color.BLACK);
+        black.setStyle(Paint.Style.FILL);
+
+        // origin location in axis
+        center[0] = 0.5f*canvas.getWidth();
+        center[1] = 0.8f*canvas.getHeight();
+
+        float lineLength = 0.3f*canvas.getWidth();
+
+        // x and y axis
+        canvas.drawLine(0, 0.8f*canvas.getHeight(), canvas.getWidth(), 0.8f*canvas.getHeight(), black);
+        canvas.drawLine(0.5f*canvas.getWidth(), 0.63f*canvas.getHeight(), 0.5f*canvas.getWidth(), canvas.getHeight(), black);
+
+        // vector
+        canvas.drawLine(center[0], center[1], center[0]-x, center[1]-y, red);
+    }
+
+    public void drawVector(float x, float y) {
+        this.x = x;
+        this.y = y;
+
+        // redraw
+        invalidate();
     }
 }
 
@@ -38,9 +67,10 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         plot = new DrawPlot(this);
-        setContentView(plot);
+        setContentView(R.layout.activity_main);
+        ActionBar.LayoutParams lp = new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        addContentView(plot, lp);
     }
 
 
@@ -202,6 +232,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         res.setText(out);
+        plot.drawVector((float)result[0], (float)result[1]);
     }
 
     public void coordinateSwitch(View v) {
